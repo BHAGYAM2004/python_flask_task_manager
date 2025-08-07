@@ -1,0 +1,13 @@
+{% extends 'format.html' %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<h1 style="text-align: center;">update manager</h1>
+<section class="update">
+    <form action="/update/{{task.id}}" method="post" style="text-align: center;">
+        <input type="text" name="task" placeholder="Enter task" value="{{task.content}}" required>
+        <input type="submit" value="update">
+    </form>
+</section>
+{% endblock %}

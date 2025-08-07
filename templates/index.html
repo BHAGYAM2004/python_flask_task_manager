@@ -1,0 +1,38 @@
+{% extends 'format.html' %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<h1 style="text-align: center;">Task manager</h1>
+ <section class="taskmanager">
+    {% if tasks %}
+    <table>
+        <tr>
+            <th>Task</th>
+            <th>added</th>
+            <th>Action</th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.content }}</td>
+            <td>{{ task.data_created.date() }}</td>
+            <td>
+                <a href="/delete/{{task.id}}" class="button">delete</a>  
+                <a href="/update/{{task.id}}" class="button">update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form action="/" method="post" style="text-align: center;">
+        <input type="text" name="task" placeholder="Enter task" required>
+        <input type="submit" value="Add Task">
+    </form>
+    {% else %}
+    <form action="/" method="post" style="text-align: center;">
+        <input type="text" name="task" placeholder="Enter task" required>
+        <input type="submit" value="Add Task">
+    </form>
+    {% endif %}
+    
+</section>
+{% endblock %}
