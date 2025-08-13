@@ -55,4 +55,6 @@ def update(id):
         return render_template('update.html', task=task)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000, use_reloader=False)
+    import os
+    port = int(os.environ.get("PORT", 5000))  # Render sets PORT env variable
+    app.run(host='0.0.0.0', port=port, debug=True, use_reloader=False)
